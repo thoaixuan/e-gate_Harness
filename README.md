@@ -21,6 +21,8 @@ login required to download).
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/thoaixuan/e-gate_Harness/main/install | bash
+# shorter form (same file):
+curl -fsSL https://github.com/thoaixuan/e-gate_Harness/raw/main/install | bash
 ```
 
 **Windows** (PowerShell):
