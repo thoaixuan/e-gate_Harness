@@ -3,7 +3,7 @@ set -euo pipefail
 APP=egatecode
 REPO=thoaixuan/e-gate_Harness
 BASE_URL="https://raw.githubusercontent.com/${REPO}/main/dist"
-DEFAULT_VERSION="2.18.30"
+DEFAULT_VERSION="3.0.29"
 
 MUTED='\033[0;2m'
 RED='\033[0;31m'
@@ -18,13 +18,13 @@ Usage: install [options]
 
 Options:
     -h, --help              Display this help message
-    -v, --version <version> Install a specific version (e.g., 2.18.30)
+    -v, --version <version> Install a specific version (e.g., 3.0.29)
     -b, --binary <path>     Install from a local binary instead of downloading
         --no-modify-path    Don't modify shell config files (.zshrc, .bashrc, etc.)
 
 Examples:
     curl -fsSL https://raw.githubusercontent.com/thoaixuan/e-gate_Harness/main/install | bash
-    curl -fsSL https://raw.githubusercontent.com/thoaixuan/e-gate_Harness/main/install | bash -s -- --version 2.18.30
+    curl -fsSL https://raw.githubusercontent.com/thoaixuan/e-gate_Harness/main/install | bash -s -- --version 3.0.29
     ./install --binary /path/to/egatecode
 EOF
 }

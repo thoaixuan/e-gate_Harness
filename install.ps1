@@ -8,7 +8,7 @@
 
 .EXAMPLE
   # Install a specific version:
-  & ([scriptblock]::Create((irm https://raw.githubusercontent.com/thoaixuan/e-gate_Harness/main/install.ps1))) -Version 2.18.30
+  & ([scriptblock]::Create((irm https://raw.githubusercontent.com/thoaixuan/e-gate_Harness/main/install.ps1))) -Version 3.0.29
 #>
 param(
   [string]$Version = "",
@@ -20,7 +20,7 @@ $ErrorActionPreference = "Stop"
 $App = "egatecode"
 $Repo = "thoaixuan/e-gate_Harness"
 $BaseUrl = "https://raw.githubusercontent.com/$Repo/main/dist"
-$DefaultVersion = "2.18.30"
+$DefaultVersion = "3.0.29"
 $InstallDir = Join-Path $HOME ".egatecode\bin"
 
 function Write-Info($msg) { Write-Host $msg }

@@ -17,11 +17,11 @@ irm https://github.com/thoaixuan/e-gate_Harness/raw/main/install.ps1 | iex
 ## Pin phiên bản cụ thể
 
 ```bash
-curl -fsSL https://github.com/thoaixuan/e-gate_Harness/raw/main/install | bash -s -- --version 2.18.30
+curl -fsSL https://github.com/thoaixuan/e-gate_Harness/raw/main/install | bash -s -- --version 3.0.29
 ```
 
 ```powershell
-& ([scriptblock]::Create((irm https://github.com/thoaixuan/e-gate_Harness/raw/main/install.ps1))) -Version 2.18.30
+& ([scriptblock]::Create((irm https://github.com/thoaixuan/e-gate_Harness/raw/main/install.ps1))) -Version 3.0.29
 ```
 
 ## Kiểm tra sau cài
