@@ -26,11 +26,38 @@ curl -fsSL https://github.com/thoaixuan/e-gate_Harness/raw/main/install | bash -
 
 ## Kiểm tra sau cài
 
-1. Mở **terminal mới** (để PATH reload).
+1. Đóng terminal cũ, mở **terminal mới** (hoặc chạy `source ~/.zshrc` trong cửa sổ hiện tại).
+   macOS chỉ load `~/.zshrc` khi mở shell mới — cửa sổ mở từ trước lúc cài sẽ vẫn báo
+   `zsh: command not found: egatecode` dù file đã có trong `~/.egatecode/bin`.
 2. `which -a egatecode` — dòng đầu phải là `~/.egatecode/bin/egatecode` (macOS/Linux)
    hoặc `%USERPROFILE%\.egatecode\bin\egatecode.exe` (Windows).
 3. `egatecode --version` — phải ra đúng bản vừa cài.
 4. Chạy `egatecode` → chọn `Agent.e-Gate.vn` → nhập API key của bạn → chọn model.
+
+## Xung đột port với OpenCode gốc
+
+`egatecode` là fork của OpenCode nên mặc định dùng chung port service `49374`.
+Nếu máy đã chạy OpenCode gốc sẽ báo lỗi
+`Managed service port 49374 on 127.0.0.1 is already in use`.
+Đổi port riêng cho `egatecode` để chạy song song (ví dụ `49474`):
+
+```bash
+egatecode service set port 49474
+```
+
+Hai bản dùng thư mục riêng (`~/.config/egatecode` và `~/.config/opencode`)
+nên không ảnh hưởng cấu hình của nhau.
+
+## Ghi chú về bản build
+
+Repo hiện có 2 bản trong `dist/`: `v2.18.30` và `v3.0.29` (mặc định).
+Giao diện/logo của bản `v3.0.29` khác OpenCode gốc và có thể khác ảnh minh họa
+trong tài liệu — đó là do bản build của repo, không phải do cài đặt sai.
+Muốn thử bản cũ:
+
+```bash
+curl -fsSL https://github.com/thoaixuan/e-gate_Harness/raw/main/install | bash -s -- --version 2.18.30
+```
 
 ## Xử lý nhanh khi lỗi
 
