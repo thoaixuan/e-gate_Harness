@@ -17,11 +17,11 @@ irm https://github.com/thoaixuan/e-gate_Harness/raw/main/install.ps1 | iex
 ## Pin phiên bản cụ thể
 
 ```bash
-curl -fsSL https://github.com/thoaixuan/e-gate_Harness/raw/main/install | bash -s -- --version 3.0.29
+curl -fsSL https://github.com/thoaixuan/e-gate_Harness/raw/main/install | bash -s -- --version 3.0.30
 ```
 
 ```powershell
-& ([scriptblock]::Create((irm https://github.com/thoaixuan/e-gate_Harness/raw/main/install.ps1))) -Version 3.0.29
+& ([scriptblock]::Create((irm https://github.com/thoaixuan/e-gate_Harness/raw/main/install.ps1))) -Version 3.0.30
 ```
 
 ## Kiểm tra sau cài
@@ -34,24 +34,23 @@ curl -fsSL https://github.com/thoaixuan/e-gate_Harness/raw/main/install | bash -
 3. `egatecode --version` — phải ra đúng bản vừa cài.
 4. Chạy `egatecode` → chọn `Agent.e-Gate.vn` → nhập API key của bạn → chọn model.
 
-## Xung đột port với OpenCode gốc
+## Port service riêng (không xung đột OpenCode gốc)
 
-`egatecode` là fork của OpenCode nên mặc định dùng chung port service `49374`.
-Nếu máy đã chạy OpenCode gốc sẽ báo lỗi
-`Managed service port 49374 on 127.0.0.1 is already in use`.
-Đổi port riêng cho `egatecode` để chạy song song (ví dụ `49474`):
+Từ bản `3.0.30`, `egatecode` mặc định dùng port service `49474` (OpenCode gốc dùng
+`49374`) nên hai bản chạy song song được ngay, không cần sửa gì. Hai bản cũng dùng
+thư mục riêng (`~/.config/egatecode` và `~/.config/opencode`) nên không ảnh hưởng
+cấu hình của nhau.
+
+Muốn đổi port khác vẫn được:
 
 ```bash
-egatecode service set port 49474
+egatecode service set port <port>
 ```
-
-Hai bản dùng thư mục riêng (`~/.config/egatecode` và `~/.config/opencode`)
-nên không ảnh hưởng cấu hình của nhau.
 
 ## Ghi chú về bản build
 
-Repo hiện có 2 bản trong `dist/`: `v2.18.30` và `v3.0.29` (mặc định).
-Giao diện/logo của bản `v3.0.29` khác OpenCode gốc và có thể khác ảnh minh họa
+Repo hiện có 2 bản trong `dist/`: `v2.18.30` và `v3.0.30` (mặc định).
+Giao diện/logo của bản `v3.0.30` khác OpenCode gốc và có thể khác ảnh minh họa
 trong tài liệu — đó là do bản build của repo, không phải do cài đặt sai.
 Muốn thử bản cũ:
 
