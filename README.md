@@ -1,9 +1,9 @@
 # e-Gate CLI — Quick Install
 
-[![version](https://img.shields.io/badge/version-3.0.32-blue)](./dist/v3.0.32)
-[![macOS](https://img.shields.io/badge/macOS-arm64%20%7C%20x64-black)](./dist/v3.0.32)
-[![Linux](https://img.shields.io/badge/Linux-x64%20%7C%20arm64-orange)](./dist/v3.0.32)
-[![Windows](https://img.shields.io/badge/Windows-x64%20%7C%20arm64-blue)](./dist/v3.0.32)
+[![version](https://img.shields.io/badge/version-3.0.33-blue)](./dist/v3.0.33)
+[![macOS](https://img.shields.io/badge/macOS-arm64%20%7C%20x64-black)](./dist/v3.0.33)
+[![Linux](https://img.shields.io/badge/Linux-x64%20%7C%20arm64-orange)](./dist/v3.0.33)
+[![Windows](https://img.shields.io/badge/Windows-x64%20%7C%20arm64-blue)](./dist/v3.0.33)
 
 > **e-Gate CLI** is a terminal AI coding assistant (a fork of OpenCode).
 > One API key from the gateway unlocks every model the gateway supports.
@@ -34,14 +34,14 @@ irm https://raw.githubusercontent.com/thoaixuan/e-gate_Harness/main/install.ps1 
 Install a specific version:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/thoaixuan/e-gate_Harness/main/install | bash -s -- --version 3.0.32
+curl -fsSL https://raw.githubusercontent.com/thoaixuan/e-gate_Harness/main/install | bash -s -- --version 3.0.33
 ```
 
 ```powershell
-& ([scriptblock]::Create((irm https://raw.githubusercontent.com/thoaixuan/e-gate_Harness/main/install.ps1))) -Version 3.0.32
+& ([scriptblock]::Create((irm https://raw.githubusercontent.com/thoaixuan/e-gate_Harness/main/install.ps1))) -Version 3.0.33
 ```
 
-Verify: `egatecode --version` → prints `3.0.32` (open a **new** terminal first so `PATH` reloads).
+Verify: `egatecode --version` → prints `3.0.33` (open a **new** terminal first so `PATH` reloads).
 
 ---
 
@@ -141,5 +141,5 @@ CPUs without AVX2 (only if the normal build crashes with `Illegal instruction`) 
 ## Versions
 
 Binaries are pinned per version under [`dist/`](./dist) (`dist/v<version>/`).
-The installers default to the latest documented version (`3.0.32`); pass
+The installers default to the latest documented version (`3.0.33`); pass
 `--version` / `-Version` to install another one listed there.

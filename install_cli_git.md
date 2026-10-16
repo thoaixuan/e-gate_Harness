@@ -17,11 +17,11 @@ irm https://github.com/thoaixuan/e-gate_Harness/raw/main/install.ps1 | iex
 ## Pin phiên bản cụ thể
 
 ```bash
-curl -fsSL https://github.com/thoaixuan/e-gate_Harness/raw/main/install | bash -s -- --version 3.0.32
+curl -fsSL https://github.com/thoaixuan/e-gate_Harness/raw/main/install | bash -s -- --version 3.0.33
 ```
 
 ```powershell
-& ([scriptblock]::Create((irm https://github.com/thoaixuan/e-gate_Harness/raw/main/install.ps1))) -Version 3.0.32
+& ([scriptblock]::Create((irm https://github.com/thoaixuan/e-gate_Harness/raw/main/install.ps1))) -Version 3.0.33
 ```
 
 ## Kiểm tra sau cài
@@ -36,7 +36,7 @@ curl -fsSL https://github.com/thoaixuan/e-gate_Harness/raw/main/install | bash -
 
 ## Port service riêng (không xung đột OpenCode gốc)
 
-Từ bản `3.0.32`, `egatecode` mặc định dùng port service `49474` (OpenCode gốc dùng
+Từ bản `3.0.33`, `egatecode` mặc định dùng port service `49474` (OpenCode gốc dùng
 `49374`) nên hai bản chạy song song được ngay, không cần sửa gì. Hai bản cũng dùng
 thư mục riêng (`~/.config/egatecode` và `~/.config/opencode`) nên không ảnh hưởng
 cấu hình của nhau.
@@ -49,8 +49,8 @@ egatecode service set port <port>
 
 ## Ghi chú về bản build
 
-Repo hiện có 5 bản trong `dist/`: `v2.18.30`, `v3.0.29`, `v3.0.30`, `v3.0.31` và `v3.0.32` (mặc định).
-Giao diện/logo của bản `v3.0.32` khác OpenCode gốc và có thể khác ảnh minh họa
+Repo hiện có 5 bản trong `dist/`: `v2.18.30`, `v3.0.29`, `v3.0.30`, `v3.0.31` và `v3.0.33` (mặc định).
+Giao diện/logo của bản `v3.0.33` khác OpenCode gốc và có thể khác ảnh minh họa
 trong tài liệu — đó là do bản build của repo, không phải do cài đặt sai.
 Muốn thử bản cũ:
 
