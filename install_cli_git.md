@@ -68,3 +68,7 @@ curl -fsSL https://github.com/thoaixuan/e-gate_Harness/raw/main/install | bash -
 | macOS chặn ("cannot be verified") | `xattr -d com.apple.quarantine ~/.egatecode/bin/egatecode` |
 | Windows SmartScreen chặn | Chuột phải file → Properties → **Unblock** → "More info → Run anyway" |
 | `Illegal instruction` lúc mở | CPU thiếu AVX2 — cài lại, script sẽ tự chọn bản `-baseline` |
+
+---
+
+© Copyright by e-Gate Center — Author: Mr Yuki Robocon

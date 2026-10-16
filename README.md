@@ -56,7 +56,8 @@ egatecode --version   # → 3.0.33
 
 1. Run `egatecode`.
 2. The **Gateway** dialog appears: choose `Agent.e-Gate.vn`.
-3. Paste **your own API key** (get one at <https://agent.e-gate.vn>).
+3. Paste **your own API key** (get one at <https://ai.e-gate.vn> — key issuance,
+   management and connection).
 4. The CLI fetches the model list and shows the picker **for you to choose**
    (your choice is remembered).
 
@@ -141,7 +142,7 @@ CPUs without AVX2 (only if the normal build crashes with `Illegal instruction`) 
 | Windows SmartScreen blocks it | Right-click → Properties → **Unblock**; “More info → Run anyway” |
 | `Illegal instruction` on startup | Your CPU lacks AVX2 — use the `-baseline` build |
 | Wrong/expired key | `/connect` → gateway → `Set Key` → paste the new key |
-| Gateway unreachable | Check <https://agent.e-gate.vn> — may be under maintenance |
+| Gateway unreachable | Check your key and connection at <https://ai.e-gate.vn> |
 | Port already in use (beside stock OpenCode) | Since 3.0.33 egatecode defaults to port `47474` (stock uses `49374`) — override with `egatecode service set port <port>` |
 | Complete reset | Delete the folders above, run first-run again |
 
@@ -161,3 +162,7 @@ CPUs without AVX2 (only if the normal build crashes with `Illegal instruction`) 
 Binaries are pinned per version under [`dist/`](./dist) (`dist/v<version>/`).
 The installers default to the latest documented version (`3.0.33`); pass
 `--version` / `-Version` to install another one listed there.
+
+---
+
+© Copyright by e-Gate Center — Author: Mr Yuki Robocon
