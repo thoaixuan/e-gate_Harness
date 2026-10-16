@@ -36,7 +36,7 @@ curl -fsSL https://github.com/thoaixuan/e-gate_Harness/raw/main/install | bash -
 
 ## Port service riêng (không xung đột OpenCode gốc)
 
-Từ bản `3.0.33`, `egatecode` mặc định dùng port service `49474` (OpenCode gốc dùng
+Từ bản `3.0.33`, `egatecode` mặc định dùng port service `47474` (OpenCode gốc dùng
 `49374`) nên hai bản chạy song song được ngay, không cần sửa gì. Hai bản cũng dùng
 thư mục riêng (`~/.config/egatecode` và `~/.config/opencode`) nên không ảnh hưởng
 cấu hình của nhau.

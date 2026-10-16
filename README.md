@@ -1,4 +1,4 @@
-# e-Gate CLI — Quick Install
+# e-Gate CLI
 
 [![version](https://img.shields.io/badge/version-3.0.33-blue)](./dist/v3.0.33)
 [![macOS](https://img.shields.io/badge/macOS-arm64%20%7C%20x64-black)](./dist/v3.0.33)
@@ -15,33 +15,75 @@ login required to download).
 
 ---
 
-## Quickstart — one command
+## Install — one command
+
+The installer detects your OS, architecture, libc (musl) and CPU (AVX2) and
+downloads the matching build. No manual file picking needed.
 
 **macOS / Linux** (bash, zsh, fish…):
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/thoaixuan/e-gate_Harness/main/install | bash
-# shorter form (same file):
 curl -fsSL https://github.com/thoaixuan/e-gate_Harness/raw/main/install | bash
 ```
 
 **Windows** (PowerShell):
 
 ```powershell
-irm https://raw.githubusercontent.com/thoaixuan/e-gate_Harness/main/install.ps1 | iex
+irm https://github.com/thoaixuan/e-gate_Harness/raw/main/install.ps1 | iex
 ```
 
 Install a specific version:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/thoaixuan/e-gate_Harness/main/install | bash -s -- --version 3.0.33
+curl -fsSL https://github.com/thoaixuan/e-gate_Harness/raw/main/install | bash -s -- --version 3.0.33
 ```
 
 ```powershell
-& ([scriptblock]::Create((irm https://raw.githubusercontent.com/thoaixuan/e-gate_Harness/main/install.ps1))) -Version 3.0.33
+& ([scriptblock]::Create((irm https://github.com/thoaixuan/e-gate_Harness/raw/main/install.ps1))) -Version 3.0.33
 ```
 
-Verify: `egatecode --version` → prints `3.0.33` (open a **new** terminal first so `PATH` reloads).
+Verify (open a **new** terminal first so `PATH` reloads):
+
+```bash
+egatecode --version   # → 3.0.33
+```
+
+> Prefer picking the file by hand? See [Manual download](#manual-download) below.
+
+---
+
+## Connect the e-Gate AI Gateway
+
+1. Run `egatecode`.
+2. The **Gateway** dialog appears: choose `Agent.e-Gate.vn`.
+3. Paste **your own API key** (get one at <https://agent.e-gate.vn>).
+4. The CLI fetches the model list and shows the picker **for you to choose**
+   (your choice is remembered).
+
+> The CLI ships with **NO key** — there is no default or demo key in the binary.
+> Your key is stored only on your machine (see below) and is never uploaded anywhere.
+
+**Pick a model later** — press `/` and type `model`: group **e-Gate AI Gateway** →
+`Agent.e-Gate.vn` lists models grouped by upstream prefix (`e-Gate · package-2`…),
+with the group of your current model pinned on top — plus **Nhập tên model...**
+(type any model id the router serves).
+
+**Change your key** — `/connect` → gateway → **`Set Key · Agent.e-Gate.vn`**.
+
+**Other providers** — `/connect` → **Preset** (Anthropic, OpenAI, Google, DeepSeek…)
+or **Custom Gateway** (any OpenAI-compatible endpoint via base URL + key).
+
+---
+
+## Keep it updated & get help
+
+- **Update** — `egatecode upgrade` installs the newest release (or
+  `egatecode upgrade 3.0.33` to pin one); in the TUI, `/update` does the same.
+  Your config and keys are kept.
+- **Help** — `/help` in the TUI (keymap, config paths, troubleshooting), or
+  `egatecode --help` in the shell.
+- **List all models** — `egatecode models`.
+- **Skip the first-run dialog** — press `Esc`, then use `/model` later.
 
 ---
 
@@ -79,19 +121,6 @@ CPUs without AVX2 (only if the normal build crashes with `Illegal instruction`) 
 
 ---
 
-## First run — enter YOUR OWN key
-
-1. Run `egatecode`.
-2. The **Gateway** dialog appears: choose `Agent.e-Gate.vn`.
-3. Paste **your own API key** (get one at <https://agent.e-gate.vn>).
-4. The CLI fetches the model list and shows the picker **for you to choose**
-   (your choice is remembered).
-
-> The CLI ships with **NO key** — there is no default or demo key in the binary.
-> Your key is stored only on your machine (see below) and is never uploaded anywhere.
-
----
-
 ## Where config is stored
 
 | What | macOS / Linux | Windows |
@@ -100,18 +129,6 @@ CPUs without AVX2 (only if the normal build crashes with `Illegal instruction`) 
 | Data (`model.json`, `auth.json`) | `~/.local/share/egatecode/` | `%USERPROFILE%\.local\share\egatecode\` |
 | Cache | `~/.cache/egatecode/` | `%USERPROFILE%\.cache\egatecode\` |
 | State | `~/.local/state/egatecode/` | `%USERPROFILE%\.local\state\egatecode\` |
-
----
-
-## Everyday usage
-
-- **Pick a model** — press `/` and type `model`: group **e-Gate AI Gateway** →
-  `Agent.e-Gate.vn` lists models grouped by upstream prefix (`e-Gate · package-2`…),
-  with the group of your current model pinned on top — plus **Nhập tên model...**
-  (type any model id the router serves).
-- **Change your key** — `/connect` → gateway → **`Set Key · Agent.e-Gate.vn`**.
-- **List all models** — `egatecode models`.
-- **Skip the first-run dialog** — press `Esc`, then use `/model` later.
 
 ---
 
@@ -125,6 +142,7 @@ CPUs without AVX2 (only if the normal build crashes with `Illegal instruction`) 
 | `Illegal instruction` on startup | Your CPU lacks AVX2 — use the `-baseline` build |
 | Wrong/expired key | `/connect` → gateway → `Set Key` → paste the new key |
 | Gateway unreachable | Check <https://agent.e-gate.vn> — may be under maintenance |
+| Port already in use (beside stock OpenCode) | Since 3.0.33 egatecode defaults to port `47474` (stock uses `49374`) — override with `egatecode service set port <port>` |
 | Complete reset | Delete the folders above, run first-run again |
 
 ---
