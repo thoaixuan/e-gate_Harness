@@ -49,7 +49,9 @@ egatecode service set port <port>
 
 ## Ghi chú về bản build
 
-Repo hiện có 5 bản trong `dist/`: `v2.18.30`, `v3.0.29`, `v3.0.30`, `v3.0.31` và `v3.0.33` (mặc định).
+Repo chỉ giữ bản mới nhất trong `dist/v3.0.33` (mặc định) để nhẹ repo; các bản cũ
+(`v2.18.30` → `v3.0.32`) đã archive trên Mega, vẫn lấy lại được từ lịch sử git:
+`git checkout <commit-cũ> -- dist/v3.0.32`.
 Giao diện/logo của bản `v3.0.33` khác OpenCode gốc và có thể khác ảnh minh họa
 trong tài liệu — đó là do bản build của repo, không phải do cài đặt sai.
 Muốn thử bản cũ:
