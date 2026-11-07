@@ -1,24 +1,39 @@
-# e-Gate CLI
+<div align="center">
+
+# ⚡ e-Gate CLI
+
+**One key. Every AI model. Right in your terminal.**
 
 [![version](https://img.shields.io/badge/version-3.0.33-blue)](./dist/v3.0.33)
 [![macOS](https://img.shields.io/badge/macOS-arm64%20%7C%20x64-black)](./dist/v3.0.33)
 [![Linux](https://img.shields.io/badge/Linux-x64%20%7C%20arm64-orange)](./dist/v3.0.33)
 [![Windows](https://img.shields.io/badge/Windows-x64%20%7C%20arm64-blue)](./dist/v3.0.33)
 
-> **e-Gate CLI** is a terminal AI coding assistant (a fork of OpenCode).
-> One API key from the gateway unlocks every model the gateway supports.
-> The binary is fully standalone — no Node.js, Bun, or Python needed.
+A fully standalone terminal AI coding assistant — no Node.js, Bun or Python
+required. One API key from the [e-Gate AI Gateway](https://ai.e-gate.vn)
+unlocks every model the gateway supports.
 
-This repo exists for one purpose: **install e-Gate CLI with a single command on
-any OS**. Binaries live in [`dist/`](./dist) (pinned per version, no account or
-login required to download).
+[Get your API key →](https://ai.e-gate.vn)
+
+</div>
 
 ---
 
-## Install — one command
+## ✨ Why e-Gate CLI
+
+- **One key — every model.** GPT, Claude, DeepSeek, Qwen, Gemini-class and
+  more through a single `sk-…` key. Switch models mid-conversation.
+- **Zero runtime.** A single self-contained binary for macOS, Linux and
+  Windows — including low-power CPU (`baseline`) and Alpine (`musl`) builds.
+- **Your key stays yours.** Stored only on your machine, never uploaded.
+  The binary ships with no keys at all.
+- **Always fresh.** `egatecode upgrade` pulls the newest release from this
+  repo — config and keys are kept.
+
+## 🚀 Install — one command
 
 The installer detects your OS, architecture, libc (musl) and CPU (AVX2) and
-downloads the matching build. No manual file picking needed.
+picks the right build automatically.
 
 **macOS / Linux** (bash, zsh, fish…):
 
@@ -42,127 +57,142 @@ curl -fsSL https://github.com/thoaixuan/e-gate_Harness/raw/main/install | bash -
 & ([scriptblock]::Create((irm https://github.com/thoaixuan/e-gate_Harness/raw/main/install.ps1))) -Version 3.0.33
 ```
 
-Verify (open a **new** terminal first so `PATH` reloads):
+## 🔑 Activate `egatecode` in your terminal
+
+The CLI installs into `~/.egatecode/bin` (Windows:
+`%USERPROFILE%\.egatecode\bin`). The installer writes `PATH` into your shell
+profile automatically — but your **current** terminal window does not know it
+yet.
+
+**Step 1 — open a NEW terminal**, then verify:
 
 ```bash
 egatecode --version   # → 3.0.33
 ```
 
-> Prefer picking the file by hand? See [Manual download](#manual-download) below.
+**Step 2 — still `command not found`?** Add `PATH` by hand for the current
+session:
 
----
+**macOS / Linux:**
 
-## Connect the e-Gate AI Gateway
+```bash
+export PATH="$HOME/.egatecode/bin:$PATH"
+```
 
-1. Run `egatecode`.
-2. The **Gateway** dialog appears: choose `Agent.e-Gate.vn`.
-3. Paste **your own API key** (get one at <https://ai.e-gate.vn> — key issuance,
-   management and connection).
-4. The CLI fetches the model list and shows the picker **for you to choose**
-   (your choice is remembered).
+To make it permanent, append that line to your `~/.zshrc` (zsh) or
+`~/.bashrc` (bash) and restart the terminal.
 
-> The CLI ships with **NO key** — there is no default or demo key in the binary.
-> Your key is stored only on your machine (see below) and is never uploaded anywhere.
+**Windows (cmd):**
 
-**Pick a model later** — press `/` and type `model`: group **e-Gate AI Gateway** →
-`Agent.e-Gate.vn` lists models grouped by upstream prefix (`e-Gate · package-2`…),
-with the group of your current model pinned on top — plus **Nhập tên model...**
-(type any model id the router serves).
+```bat
+setx PATH "%PATH%;%USERPROFILE%\.egatecode\bin"
+```
 
-**Change your key** — `/connect` → gateway → **`Set Key · Agent.e-Gate.vn`**.
+Then close and reopen the terminal. (PowerShell users: the installer already
+adds it to your **User PATH** — just open a new window.)
 
-**Other providers** — `/connect` → **Preset** (Anthropic, OpenAI, Google, DeepSeek…)
-or **Custom Gateway** (any OpenAI-compatible endpoint via base URL + key).
+**Step 3 — done.** Jump to [Quick start](#-quick-start).
 
----
+> Prefer picking the binary by hand? See
+> [Manual download](#-manual-download) below.
 
-## Keep it updated & get help
+## 🧭 Quick start
 
-- **Update** — `egatecode upgrade` installs the newest release (or
-  `egatecode upgrade 3.0.33` to pin one); in the TUI, `/update` does the same.
-  Your config and keys are kept.
-- **Help** — `/help` in the TUI (keymap, config paths, troubleshooting), or
-  `egatecode --help` in the shell.
-- **List all models** — `egatecode models`.
-- **Skip the first-run dialog** — press `Esc`, then use `/model` later.
+1. Run:
 
----
+   ```bash
+   egatecode
+   ```
 
-## Manual download
+2. The **Gateway** dialog opens on first run — choose `Agent.e-Gate.vn` and
+   paste **your own API key**
+   ([create one at ai.e-gate.vn](https://ai.e-gate.vn)).
+3. The CLI fetches the model list served by your key and shows the picker —
+   choose one and start working. Your choice is remembered.
 
-Pick the **ONE** file that matches your computer. Everything else can be ignored.
+**Everyday commands**
 
-| Your computer | Download this file |
+| Do this | How |
+|---|---|
+| Switch models | `/` → type `model` — the group of your current model stays pinned on top |
+| Change your key | `/connect` → gateway → **Set Key · Agent.e-Gate.vn** |
+| Use another provider | `/connect` → **Preset** (Anthropic, OpenAI, Google, DeepSeek…) |
+| Custom endpoint | Add it to `~/.config/egatecode/egatecode.json` (any OpenAI-compatible base URL + key) |
+| Update | `egatecode upgrade` (or `/update` in the TUI) — config and keys are kept |
+| Help | `/help` in the TUI · `egatecode --help` in the shell · `egatecode models` lists models |
+
+> The CLI ships with **NO key** — there is no default or demo key in the
+> binary. Your key is stored only on your machine and is never uploaded
+> anywhere.
+
+## 📦 Manual download
+
+Pick the **ONE** file that matches your computer from
+[`dist/v3.0.33`](./dist/v3.0.33):
+
+| Your computer | File |
 |---|---|
 | **Windows** 10/11 (Intel/AMD) | `egatecode-windows-x64.zip` |
-| **Windows** on old CPU (no AVX2) | `egatecode-windows-x64-baseline.zip` |
+| **Windows** old CPU (no AVX2) | `egatecode-windows-x64-baseline.zip` |
 | **Windows** ARM (Surface Pro X…) | `egatecode-windows-arm64.zip` |
-| **macOS** Apple Silicon (M1/M2/M3/M4) | `egatecode-darwin-arm64.zip` |
+| **macOS** Apple Silicon (M1–M4) | `egatecode-darwin-arm64.zip` |
 | **macOS** Intel | `egatecode-darwin-x64.zip` |
 | **macOS** Intel old CPU (no AVX2) | `egatecode-darwin-x64-baseline.zip` |
-| **Linux** x64 — Ubuntu, Debian, Fedora, Mint… | `egatecode-linux-x64.tar.gz` |
+| **Linux** x64 — Ubuntu, Debian, Fedora… | `egatecode-linux-x64.tar.gz` |
 | **Linux** x64 old CPU (no AVX2) | `egatecode-linux-x64-baseline.tar.gz` |
 | **Linux** ARM64 — Raspberry Pi 4/5 | `egatecode-linux-arm64.tar.gz` |
-| **Alpine Linux** (musl) x64 | `egatecode-linux-x64-musl.tar.gz` |
-| **Alpine Linux** (musl) ARM64 | `egatecode-linux-arm64-musl.tar.gz` |
-| **Alpine Linux** old CPU (no AVX2) | `egatecode-linux-x64-baseline-musl.tar.gz` |
+| **Alpine** (musl) x64 / ARM64 / old CPU | `egatecode-linux-{x64|arm64|x64-baseline}-musl.tar.gz` |
 
-File-name terms: **`arm64`** = Apple Silicon / ARM machines · **`baseline`** = old
-CPUs without AVX2 (only if the normal build crashes with `Illegal instruction`) ·
+File-name terms: **`arm64`** = Apple Silicon / ARM · **`baseline`** = CPUs
+without AVX2 (only if the normal build crashes with `Illegal instruction`) ·
 **`musl`** = Alpine Linux only.
 
-- **Windows manual:** extract the zip, then double-click `start_fast.bat` (included)
-  — it adds the folder to `PATH` and launches the CLI. Or add the folder to `PATH`
-  yourself and run `egatecode` from a new terminal.
-- **macOS manual:** unzip to `~/.egatecode/bin`, add it to `PATH`. If macOS blocks
-  the app (“developer cannot be verified”):
-  `xattr -d com.apple.quarantine ~/.egatecode/bin/egatecode`
-- **Linux manual:** `tar -xzf egatecode-linux-x64.tar.gz -C ~/.egatecode/bin`,
-  add `~/.egatecode/bin` to `PATH`.
+- **Windows manual:** extract the zip, then double-click `start_fast.bat`
+  (included) — it adds the folder to `PATH` and launches the CLI.
+- **macOS manual:** unzip to `~/.egatecode/bin`, then
+  `xattr -d com.apple.quarantine ~/.egatecode/bin/egatecode` if macOS blocks
+  the binary (“developer cannot be verified”).
+- **Linux manual:** `tar -xzf egatecode-linux-x64.tar.gz -C ~/.egatecode/bin`.
 
----
+## 🗂 Config & data
 
-## Where config is stored
-
-| What | macOS / Linux | Windows |
-|---|---|---|
-| Config (`egatecode.json`) | `~/.config/egatecode/` | `%USERPROFILE%\.config\egatecode\` |
-| Data (`model.json`, `auth.json`) | `~/.local/share/egatecode/` | `%USERPROFILE%\.local\share\egatecode\` |
-| Cache | `~/.cache/egatecode/` | `%USERPROFILE%\.cache\egatecode\` |
-| State | `~/.local/state/egatecode/` | `%USERPROFILE%\.local\state\egatecode\` |
-
----
-
-## Troubleshooting
-
-| Problem | Fix |
+| What | Where |
 |---|---|
-| `egatecode: command not found` | Folder not in `PATH` — open a **new** terminal after installing |
-| macOS “cannot be verified” | `xattr -d com.apple.quarantine ~/.egatecode/bin/egatecode` |
-| Windows SmartScreen blocks it | Right-click → Properties → **Unblock**; “More info → Run anyway” |
-| `Illegal instruction` on startup | Your CPU lacks AVX2 — use the `-baseline` build |
-| Wrong/expired key | `/connect` → gateway → `Set Key` → paste the new key |
-| Gateway unreachable | Check your key and connection at <https://ai.e-gate.vn> |
-| Port already in use (beside stock OpenCode) | Since 3.0.33 egatecode defaults to port `47474` (stock uses `49374`) — override with `egatecode service set port <port>` |
-| Complete reset | Delete the folders above, run first-run again |
+| Config | `~/.config/egatecode/egatecode.json` |
+| Data | `~/.local/share/egatecode` |
+
+e-Gate CLI is fully isolated from any other `opencode` installation —
+separate config, data, port and binary name.
+
+## 🛠 Troubleshooting
+
+- **`egatecode: command not found`** →
+  [Activate `egatecode` in your terminal](#-activate-egatecode-in-your-terminal).
+- **macOS blocks the binary** →
+  `xattr -d com.apple.quarantine ~/.egatecode/bin/egatecode`
+- **Crash with `Illegal instruction`** → install the **`baseline`** build for
+  your CPU.
+- **Behind a proxy** → give the background service its address:
+  `egatecode service set env HTTPS_PROXY <url>` (and `NO_PROXY` for hosts to
+  reach directly).
+
+## 🧹 Uninstall
+
+Delete the folder and the profile line the installer added:
+
+```bash
+rm -rf ~/.egatecode ~/.config/egatecode ~/.local/share/egatecode
+```
 
 ---
 
-## Uninstall
+<div align="center">
 
-- **Windows**: delete `egatecode.exe` (+ `start_fast.bat`), remove the `PATH` entry.
-- **macOS / Linux**: `rm ~/.egatecode/bin/egatecode`, remove the `export PATH` line
-  from `~/.zshrc` / `~/.bashrc`.
-- Optional: delete the config/data folders above to remove all personal data.
+### 🚀 Ready to work faster?
 
----
+**[ai.e-gate.vn](https://ai.e-gate.vn)** — create your API key, manage models,
+top up your wallet and track usage in one place.
 
-## Versions
+*e-Gate — One key, every AI model.*
 
-Binaries are pinned per version under [`dist/`](./dist) (`dist/v<version>/`).
-The installers default to the latest documented version (`3.0.33`); pass
-`--version` / `-Version` to install another one listed there.
-
----
-
-© Copyright by e-Gate Center — Author: Mr Yuki Robocon
+</div>
